@@ -12,6 +12,12 @@ services:
       WORDPRESS_DB_NAME: nombredb
     volumes:
       - wordpress:/var/www/html
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "traefik.http.rourters.wp-secure.entrypoints=websecure"
+      - "traefik.http.rourters.wp-secure.rules=Host(`api.dom.com`,`dom.com)"
   db:
     image: mysql:5.7
     restart: always
@@ -25,11 +31,6 @@ services:
     networks:
       - proxy
       - default
-    labels:
-      - "traefik.enable=true"
-      - "traefik.docker.network=proxy"
-      - "traefik.http.rourters.wp-secure.entrypoints=websecure"
-      - "traefik.http.rourters.wp-secure.rules=Host(`api.dom.com`)"
 volumes:
   wordpress:
   db:
