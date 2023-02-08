@@ -16,8 +16,8 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
-      - "traefik.http.rourters.wp-secure.entrypoints=websecure"
-      - "traefik.http.rourters.wp-secure.rules=Host(`api.dom.com`,`dom.com)"
+      - "traefik.http.routers.wp-secure.entrypoints=websecure"
+      - "traefik.http.routers.wp-secure.rule=Host(`api.dom.com`,`dom.com`)"
   db:
     image: mysql:5.7
     restart: always
